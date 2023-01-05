@@ -1,0 +1,7 @@
+install.packages("foreign")
+library(foreign)
+library(dplyr)
+library(ggplot2)
+library(readxl)
+
+dust.df <- read.csv("SeoulFineDust")

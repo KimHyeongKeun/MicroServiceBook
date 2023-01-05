@@ -1,0 +1,133 @@
+#1-1
+car.df <- read.csv("ToyotaCorolla.csv")
+car.df <- car.df[1:1000,]
+selected.var <- c(3,4,7,8,9,10,12,13,14,17,18)
+set.seed(1)
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+test.index <- sample(c(1:1000),200)
+
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[valid.index,selected.var]
+test.df <- car.df[test.index, selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+
+install.packages("leaps")
+library(leaps)
+
+#Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+Fuel_Type <- data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+
+sum <-summary(search)
+sum$which
+
+sum$rsq
+sum$adjr2
+sum$cp
+
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+
+car.lm.step <- step(car.lm, direction ="backward")
+summary(car.lm.step)
+
+
+
+
+#1-2
+#Age_08_04, KM, HP이 Forward,Backward,Both, Exhaustive를 갖고 있기에 가장 중요한 자동차의 속성이다.
+
+
+
+
+
+#1-3
+car.lm.step.pred <- predict(car.lm.step, valid.df)
+accuracy(car.lm.step.pred,valid.df$Price)
+
+car.lm.step.pred_t <- predict(car.lm.step, test.df)
+accuracy(car.lm.step.pred_t,test.df$Price)
+
+car.lm.step <- step(car.lm, direction ="both")
+summary(car.lm.step)
+
+
+
+#2-1
+housing.df <- read.csv("BostonHousing.csv")
+
+set.seed(123)
+train.index <- sample(row.names(housing.df), 0.6*dim(housing.df)[1])  
+valid.index <- setdiff(row.names(housing.df), train.index)  
+train.df <- housing.df[train.index, -14]
+valid.df <- housing.df[valid.index, -14]
+
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+housing.norm.df <-housing.df
+
+install.packages(carnet)
+install.packages("FNN")
+library("ggplot2")
+library("caret")
+library(class)
+library(FNN)
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+train.norm.df <- as.data.frame(predict(norm.values, train.df))
+valid.norm.df <- as.data.frame(predict(norm.values, valid.df))
+housing.norm.df <- as.data.frame(predict(norm.values, housing.df))
+
+
+accuracy.df <- data.frame(k = seq(1, 5, 1), RMSE = rep(0, 5))
+
+for(i in 1:5){
+  knn.pred<-class::knn(train = train.norm.df[,-13],                          
+                       test = valid.norm.df[,-13],                          
+                       cl = train.df[,13], k = i)
+  accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+
+accuracy.df
+
+#2-1
+#1번째 k는 RMSE가 가장 낮기 때문에 가장 적합하다. 하지만 1번째 k에서 오버핏 때문에 2번째 k를 사용한다.
+
+
+
+#2-2
+new.df<-data.frame(0.2,0,7,0,0.538,6,62,4.7,4,307,21,10)
+names(new.df)<-names(train.norm.df)[-13]
+
+new.norm.values <- preProcess(new.df, method=c("center", "scale"))
+new.norm.df <- predict(new.norm.values, newdata = new.df)
+new.knn.pred <- class::knn(train = train.norm.df[,-13],test = new.norm.df, cl = train.df$MEDV, k = 2)
+new.knn.pred
+
+
+#2-3
+#error를 과소추정하는 성향이다. KNN은 k가 작을 수록 모델의 복잡도가 높다. 가장 복잡한 k=1인 경우 Training error가 가장 작지만 test error는 상당히 높다. 즉 과적합이 발생되는 것이다.
+
+
+
+#2-4
+
+#validation 데이터는 training 데이터set에서 나온 것이기 때문에 특정 data set을 해결하기 위해 무조건적으로 포함되어있어서 결과가 낙관적이다.
+
+
+#2-5
+#k-nn의 단점은 예측되는 모든 기록의 경우, 예측 시에만 전체 교육 기록 세트로부터 거리를 계산하는 단점이 있다. 각 새로운 데이터의 사이의 거리를 결정하기 위해 실행되는 시간의 비교다. 그 후 MEDV를 예측하기 위해 가장 가까운 이웃의 값으로 평균을 구해야하한다. 알고리즘 과정으로는 데이터 셋으로 부터 거리를 계산하고 거리를 늘려가면서 데이터의 점을 정렬한다. RMSE로 교차 검증하여 가장 가까운 이웃의 최적 k개수를 찾고 k에 가장 가까운 이웃을 사용하여 역으로 가중 평균을 구한다. 가중치는 거리에 반비례하게 하여 거리가 짧을 수록 큰 가중치를 갖게 한다.

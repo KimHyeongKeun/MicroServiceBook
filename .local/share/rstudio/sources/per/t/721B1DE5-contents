@@ -1,0 +1,80 @@
+#1
+
+car.df <- read.csv("ToyotaCorolla.csv")
+
+car.df <- car.df[1:1000, ]
+
+training <- sample(car.df$Id,500)
+car.df <- setdiff(car.df, training)
+validation <-sample(car.df$Id,300)
+test <- setdiff(car.df,validation)
+
+output.var <- c(3)
+input.var <- c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)
+
+
+reg <- lm(Price~., data=car.df[,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], subset = training, na.action=na.exclude)
+pred_t <- predict(reg, na.actioni=na.pass)
+pred_v <- predict(reg, newdata=car.df[validation,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+
+  accuracy(pred_t, car.df[training,]$Price)
+#train.index <-sample(c(1:1000),500)
+
+#valid.index <- sample(c(1:1000), 300)
+#test.index <- sample(c(1:1000),200)
+#train.df <- car.df[train.index, selected.var]
+#valid.df <- car.df[valid.index, selected.var]
+#test.df <- car.df[]
+#test.df <- car.df[test.index, selected.var]
+
+#car.lm <- lm(Age_08_04 ~., data = train.df)
+#options(scipen = 999)
+#summary(car.lm)
+
+
+#1-2
+
+# 1)Age_08_04 2)KM 3)Fuel_Type_CNG 4) Fuel_Type_Disel등이 중요하다. 
+
+
+#1-3
+
+library(forecast)
+reg <- lm(Price~., data=car.df[-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], subset = test, na.action=na.exclude)
+pred_t<-predict()
+pred_v <- predict(reg, newdata=car.df[validatioin,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], na.action=na.pass)
+
+
+
+
+#2
+
+#2-1
+
+housing.df <- read.csv("BostonHousing.csv")
+
+set.seed(123)
+train.index <- sample(row.names(housing.df), 0.6*dim(housing.df)[1])  
+valid.index <- setdiff(row.names(housing.df), train.index)  
+train.df <- housing.df[train.index, -14]
+valid.df <- housing.df[valid.index, -14]
+
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+housing.norm.df <-housing.df
+
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+train.norm.df <- as.data.frame(predict(norm.values, train.df))
+valid.norm.df <- as.data.frame(predict(norm.values, valid.df))
+housing.norm.df <- as.data.frame(predict(norm.values, housing.df))
+
+accuracy.df <- data.frame(k = seq(1, 5, 1), RMSE = rep(0, 5))
+
+for(i in 1:5){
+  knn.pred<-class::knn(train = train.norm.df[,-13],                          
+                       test = valid.norm.df[,-13],                          
+                       cl = train.df[,13], k = i)
+  accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+
+accuracy.df

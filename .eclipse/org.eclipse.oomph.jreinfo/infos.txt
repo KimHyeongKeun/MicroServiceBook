@@ -1,0 +1,1 @@
+/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home:15:0:2:64:true:1607372985000

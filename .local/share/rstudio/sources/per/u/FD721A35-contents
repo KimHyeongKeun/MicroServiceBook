@@ -1,0 +1,28 @@
+#[1109] Association rules(arules)
+
+fp.df <- read.csv("Faceplate.csv")
+
+#remove first colum and conver to matrix
+fp.mat <- as.matrix(fp.df[,-1])
+
+#convert the binary incidence matrix into a transaction database
+install.packages("arules")
+library(arules)
+
+#Transaction data: 1과 0으로 이루어진 데이터에서 0이 훨씬 많을 때
+fp.trans <- as(fp.mat, "transactions")
+inspect(fp.trans)
+
+rules <- apriori(fp.trans, parameter = list(supp = 0.2, conf = 0.5, target = "rules"))
+
+inspect(head(sort(rules, by = "lift"), n=6))
+
+
+
+#Example2  마저 보기
+
+all.books.df <- read.csv("CharlesBookClub.csv")
+
+#create a binary incidence matrix
+count.books.df <- all.books.df[, 8:18]
+incid.books.df <- ifelse(count.books.df > 0, 1, 0)

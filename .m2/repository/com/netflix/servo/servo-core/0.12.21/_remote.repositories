@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Oct 07 14:35:12 KST 2022
+servo-core-0.12.21.jar>central=
+servo-core-0.12.21-sources.jar>central=
+servo-core-0.12.21.pom>central=
+servo-core-0.12.21-javadoc.jar>central=

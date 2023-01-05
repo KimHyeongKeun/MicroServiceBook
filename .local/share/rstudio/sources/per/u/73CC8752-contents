@@ -1,0 +1,31 @@
+install.packages("foreign")
+library("foreign")
+library(foreign)
+library(dplyr)
+library(ggplot2)
+library(readxl)
+dust.df <- read.csv("SeoulFineDust.csv")
+
+dust.df <- rename(dust.df,
+                  Finedust =FineDust.PM )
+
+View(dust.df)
+
+str(dust.df)
+# 전처리 
+
+table(dust.df$Finedust)
+
+#결측치 확인 
+table(is.na(dust.df$Finedust))
+sum(is.na(dust.df$Finedust))
+
+#결측치 처리
+Finedust_clean <- dust.df%>%filter(!is.na(Finedust))
+table(is.na(Finedust_clean$Finedust))
+
+#이상치 처리
+dust.df$Finedust <- ifelse(dust.df$Finedust<10, NA, dust.df$Finedust)
+
+table(is.na(dust.df$Finedust))
+str(dust.df)

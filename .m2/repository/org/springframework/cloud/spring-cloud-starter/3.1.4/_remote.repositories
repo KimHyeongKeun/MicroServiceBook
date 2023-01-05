@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Oct 07 14:36:32 KST 2022
+spring-cloud-starter-3.1.4.jar>central=
+spring-cloud-starter-3.1.4-javadoc.jar>central=
+spring-cloud-starter-3.1.4.pom>central=

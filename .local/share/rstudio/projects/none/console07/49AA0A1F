@@ -1,0 +1,11 @@
+]0;~[?1034hgimhyeong-geun-ui-MacBookAir:~ gimhyeong-geun$ [Kgimhyeong-geun-ui-MacBookAir:~ gimhyeong-geun$  cd c:/selenium 
+bash: cd: c:/selenium: No such file or directory
+]0;~gimhyeong-geun-ui-MacBookAir:~ gimhyeong-geun$  java -Dwebdriver.gecko.driver="geckodriver.exe"  -jar selenium-server-standalone-3.9.1.jar -por t 4446
+Error: Unable to access jarfile selenium-server-standalone-3.9.1.jar
+]0;~gimhyeong-geun-ui-MacBookAir:~ gimhyeong-geun$   cd c:/selenium 
+bash: cd: c:/selenium: No such file or directory
+]0;~gimhyeong-geun-ui-MacBookAir:~ gimhyeong-geun$  java -Dwebdriver.gecko.driver="geckodriver.exe"  -jar selenium-server-standalone-3.9.1.jar -por t 4446
+Error: Unable to access jarfile selenium-server-standalone-3.9.1.jar
+]0;~gimhyeong-geun-ui-MacBookAir:~ gimhyeong-geun$   confusionMatrix(ifelse(dust.df$Finedust>30, 'dust high','no dust high'), dust.df$Month)
+]0;~[?1034hgimhyeong-geun-ui-MacBookAir:~ gimhyeong-geun$  confusionMatrix(ifelse(dust.df$Finedust>30, 'du st high','no dust high'), dust.df$Month)
+bash: syntax error near unexpected token `ifelse'

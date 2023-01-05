@@ -1,0 +1,7 @@
+[PKCS#11.Driver]
+Driver=Vid_04e8&Pid_0007 
+
+[Vid_04e8&Pid_0007]
+Info=XecureHSM:1.0.0.1
+Name=/Users/gimhyeong-geun/.softforum/pkcs11/hsm/libXecureHSM.dylib
+SignatureToken=/Users/gimhyeong-geun/.softforum/pkcs11/hsm/Vid_04e8&Pid_0007.der

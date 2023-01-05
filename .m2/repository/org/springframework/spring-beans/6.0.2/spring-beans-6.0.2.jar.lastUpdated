@@ -1,0 +1,8 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Nov 30 20:53:10 KST 2022
+https\://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates/.lastUpdated=1669809162481
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1669809190230
+https\://repo.spring.io/milestone/.error=
+https\://repo.spring.io/milestone/.lastUpdated=1669809174984
+https\://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates/.error=
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.springframework\:spring-beans\:jar\:6.0.2 from/to central (https\://repo.maven.apache.org/maven2)\: /Users/gimhyeong-geun/.m2/repository/org/springframework/spring-beans/6.0.2/spring-beans-6.0.2.jar.part (No such file or directory)

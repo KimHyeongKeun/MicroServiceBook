@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:LocationCatalog
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0">
+  <installation>
+    <key href="file:/Users/gimhyeong-geun/Desktop/3학년/언어/Eclipse.app/Contents/Eclipse/configuration/org.eclipse.oomph.setup/installation.setup#/"/>
+    <value href="file:/Users/gimhyeong-geun/eclipse-workspace/pattern/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup#/"/>
+  </installation>
+  <workspace>
+    <key href="file:/Users/gimhyeong-geun/eclipse-workspace/pattern/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup#/"/>
+    <value href="file:/Users/gimhyeong-geun/Desktop/3학년/언어/Eclipse.app/Contents/Eclipse/configuration/org.eclipse.oomph.setup/installation.setup#/"/>
+  </workspace>
+  <workspace>
+    <key href="file:/Users/gimhyeong-geun/eclipse-workspace/new/frame/frame/src/frame/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup#/"/>
+  </workspace>
+  <workspace>
+    <key href="file:/Users/gimhyeong-geun/eclipse-workspace/new/frame/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup#/"/>
+  </workspace>
+  <workspace>
+    <key href="file:/Users/gimhyeong-geun/eclipse-workspace/new/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup#/"/>
+  </workspace>
+  <workspace>
+    <key href="file:/Users/gimhyeong-geun/eclipse-workspace/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup#/"/>
+  </workspace>
+</setup:LocationCatalog>

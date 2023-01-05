@@ -1,0 +1,177 @@
+install.packages("foreign")
+install.packages("party")
+install.packages('ROCR')
+
+library("foreign")
+library("dplyr")
+library("ggplot2")
+library("readxl")
+library(caret)
+library("forecast")
+library(ggmap)
+
+
+
+
+dust.df <- read.csv("SeoulFineDust.csv")
+age.df <- read.csv("age.csv")
+No2.df <- read.csv("SeoulNo2.csv")
+
+
+
+dust.df <- rename(dust.df,
+                  Finedust =FineDust.PM )
+
+No2.df <- rename(No2.df,
+                 no2 = NO2.ppm)
+
+
+View(dust.df)
+
+
+str(dust.df)
+
+
+#데이터 분석
+
+
+
+#미세먼지가 1일날 미세먼지가 심한 도시 
+
+Finedustcitydate <- dust.df %>% 
+  filter(District=="강남구")%>%
+  filter(Date=='1')%>%
+  arrange(desc(Finedust)) 
+
+View(Finedustcitydate)
+
+#미세먼지가 심한 도시 그래프로 나타내기 
+
+ggplot(data = dust.df, aes(x=District, y=Finedust)) + geom_col() + scale_y_continuous(labels = scales::comma) + xlab("지역구") + ylab("먼지")
+
+
+#미세먼지가 심한 날짜 
+FinedustDate <- dust.df %>% 
+  filter(Date=="1")%>%
+  arrange(desc(Finedust)) 
+
+View(FinedustDate)
+
+#미세먼지가 심한 날짜 그래프로 나타내기
+
+ggplot(data = dust.df, aes(x=Date, y=Finedust)) + geom_col() + scale_y_continuous(labels = scales::comma) + xlab("날짜") + ylab("먼지")
+
+
+
+# 미세먼지를 이용한 다중 선형 회귀분석 모델
+
+
+# 전처리 
+
+table(dust.df$Finedust)
+
+#결측치 확인 
+table(is.na(dust.df$Finedust))
+sum(is.na(dust.df$Finedust))
+
+#결측치 처리
+Finedust_clean <- dust.df%>%filter(!is.na(Finedust))
+table(is.na(Finedust_clean$Finedust))
+
+#이상치 처리
+dust.df$Finedust <- ifelse(dust.df$Finedust<10, NA, dust.df$Finedust)
+
+table(is.na(dust.df$Finedust))
+
+Finedust_clean <- dust.df%>%filter(!is.na(Finedust))
+table(is.na(Finedust_clean$Finedust))
+
+View(dust.df)
+
+#날씨 예측 
+new.df <- data.frame(date = 10, month = 3, Finedust = 35)
+
+
+
+#partitioning for training and validation
+set.seed(1)
+train.index <- sample(c(1:dim(dust.df)[1]), dim(dust.df)[1]*0.6)
+train.df <- dust.df[train.index,]
+valid.df <- dust.df[-train.index,]
+
+
+#정규화
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+dust.norm.df <- dust.df
+norm.values <- preProcess( train.df[,1:4], method=c("center"))
+train.norm.df[,1:3] <- predict( norm.values, train.df[,1:3] )
+valid.norm.df[,1:3] <- predict( norm.values, valid.df[,1:3] )
+dust.norm.df[,1:3] <- predict( norm.values, dust.df[,1:3] )
+# 오류 new.norm.df<- predict(norm.values,new.df)
+
+
+#다중 선형 회구 모델 with training set
+Finedust.lm <- lm(Finedust ~ ., data = train.norm.df)
+options(scipen=999)
+summary(Finedust.lm)
+
+# validation set for accuracy
+Finedust.lm.pred <- predict(Finedust.lm, valid.norm.df)
+options(scipen=999, digits=0)
+#check the residuals
+some.residuals <- valid.norm.df$Finedust[1:5]
+Finedust.lm.pred[1:5]
+#df for residuals
+data.frame("Predicted" = Finedust.lm.pred[1:5], "Actual"= valid.norm.df$Finedust[1:5], "Residual" = some.residuals)
+options(scipen =999, digits=3)
+forecast::accuracy(Finedust.lm.pred, valid.norm.df$Finedust)
+
+#train set for accuaray
+Finedust.lm.pred.train <- predict(Finedust.lm, train.norm.df)
+options(scipen=999, digits = 0)
+# check the residuals 
+some.residuals <- train.norm.df$Finedust[1:5] - Finedust.lm.pred.train[1:5]
+# df for residuals
+data.frame("Predicted" = Finedust.lm.pred.train[1:5], "Acutal" = train.norm.df$Finedust[1:5], "Residual" = some.residuals)
+options(scipen =999, digits = 3)
+# check the accuracy
+forecast::accuracy(Finedust.lm.pred.train, train.norm.df$rFinedust)
+
+# // show all residuals with visualization
+all.residuals <- valid.norm.df$Finedust - Finedust.lm.pred
+hist(all.residuals, breaks = 20, xlab = "Residuals", main = "chart")
+
+plot(Finedust.lm.pred.train)
+
+
+
+#이산화질소를 이용한 다중 선형 회귀 분석 모델 
+
+
+# 전처리 
+
+View(No2.df)
+table(No2.df$no2)
+
+#결측치 확인 
+table(is.na(No2.df$no2))
+sum(is.na(No2.df$no2))
+
+#결측치 처리
+no2_clean <- No2.df%>%filter(!is.na(no2))
+table(is.na(no2_clean$no2))
+
+#이상치 처리
+No2.df$no2 <- ifelse(No2.df$no2<10, NA, no2.df$no2)
+
+table(is.na(No2.df$no2))
+
+no2_clean <- No2.df%>%filter(!is.na(no2))
+table(is.na(no2_clean$no2))
+
+View(No2.df)
+
+#날씨 예측 
+new.df <- data.frame(date = 10, month = 3, Finedust = 35)
+

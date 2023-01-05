@@ -1,0 +1,512 @@
+test = valid.norm.df[,-13],
+cl = train.df[,13], k = i)
+accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+housing.norm.df <-housing.df
+# use preProcess() from the caret package to normalize Income and Lot_Size.
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+housing.df <- read.csv("BostonHousing.csv")
+set.seed(123)
+train.index <- sample(row.names(housing.df), 0.6*dim(housing.df)[1])
+valid.index <- setdiff(row.names(housing.df), train.index)
+train.df <- housing.df[train.index, -14]
+valid.df <- housing.df[valid.index, -14]
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+housing.norm.df <-housing.df
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+train.norm.df <- as.data.frame(predict(norm.values, train.df))
+accuracy.df
+knn.pred<-class::knn(train = train.norm.df[,-13],
+test = valid.norm.df[,-13],
+cl = train.df[,13], k = i)
+accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+for(i in 1:5){
+knn.pred<-class::knn(train = train.norm.df[,-13],
+test = valid.norm.df[,-13],
+cl = train.df[,13], k = i)
+accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+accuracy.df
+reg <- lm(Age_08_04~., data=car.df[-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], subset = testing, na.action=na.exclude)
+reg <- lm(Price~., data=car.df[-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], subset = testing, na.action=na.exclude)
+reg <- lm(Price~., data=car.df[-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], subset = test, na.action=na.exclude)
+car.df <- 1:n
+#train.index <-sample(c(1:1000),500)
+training <- sample(car.df$Id,500)
+car.df <- setdiff(car.df, training)
+test <- setdiff(car.df,validation)
+#train.index <-sample(c(1:1000),500)
+training <- sample(car.df$Id,500)
+car.df <- setdiff(car.df, training)
+validation <-sample(car.df$Id,300)
+test <- setdiff(car.df,validation)
+input.var <- c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)
+view input.var
+View(input.var)
+car.df <- read.csv("ToyotaCorolla.csv")
+car.df <- car.df[1:1000, ]
+training <- sample(car.df$Id,500)
+car.df <- setdiff(car.df, training)
+validation <-sample(car.df$Id,300)
+test <- setdiff(car.df,validation)
+input.var <- c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)
+input.var <- car.df(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)
+input.var
+input.var <- c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)
+input.var
+reg <- ln(Price~., data=car.df[,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], subset = training, na.action=na.exclude)
+reg <- lm(Price~., data=car.df[,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)], subset = training, na.action=na.exclude)
+pred_t <- predict(reg, na.actioni=na.pass)
+pred_v <- predict(reg, newdata=car.df[validation,-c4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+pred_v <- predict(reg, newdata=car.df[validation,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+pred_v <- predict(reg, newdata=car.df[validation,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+pred_t <- predict(reg, na.actioni=na.pass)
+pred_v <- predict(reg, newdata=car.df[validation,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+accuracy(pred_t, car.df[training,]$Price)
+pred_v <- predict(reg, newdata=car.df[validation,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+pred_v <- predict(reg, data=car.df[validation,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+pred_v <- predict(reg, newdata=car.df[validation,-c(4,7,8,9,12,14,17,19,21,25,26,27,29,33,38)],na.action=na.pass)
+car.df <- read.csv("ToyotalCorolla.csv")
+car.df <- read.csv("ToyotaCorolla.csv")
+car.df <- car.df[1:1000,]
+selected.var <- c(3,4,7,8,9,10,12,13,14,17,18)
+set.seed(1)
+train.index <- sample(c(1:1000),600)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[-train.index,selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+optioins(scipen =999, digits =3)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type,data=train.df))
+#3
+library(leaps)
+#3
+install.packages("leaps")
+library(leaps)
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method = "exhaustive")
+search <- regsubsets(Price ~., data = train.df, nbest =1, nvmax = dim(train.df)[2], method = "exhaustive")
+sum <-summary(search)
+sum$which
+sum$rsq
+sum$adjr2
+sum$cp
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null,scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm, direction ="backward")
+summary(car.lm.step)
+accuracy(car.lm.pred,valid.df$Price)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type,data=train.df))
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type,data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+car.df <- read.csv("ToyotaCorolla.csv")
+car.df <- car.df[1:1000,]
+selected.var <- c(3,4,7,8,9,10,12,13,14,17,18)
+set.seed(1)
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[-train.index,selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+#3
+install.packages("leaps")
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+search <- regsubsets(Price ~., data = train.df, nbest =1, nvmax = dim(train.df)[2], method = "exhaustive")
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm.null,
+initial model
+scope=list(lower=car.lm.null, upper=car.lm), direction =
+"forward")
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+#3
+install.packages("leaps")
+install.packages("leaps")
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+car.df <- read.csv("ToyotaCorolla.csv")
+car.df <- car.df[1:1000,]
+selected.var <- c(3,4,7,8,9,10,12,13,14,17,18)
+set.seed(1)
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[-train.index,selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+#3
+#install.packages("leaps")
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[-train.index,selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+#3
+#install.packages("leaps")
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm, direction ="backward")
+summary(car.lm.step)
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+sum <-summary(search)
+sum$which
+sum$rsq
+sum$adjr2
+sum$cp
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm, direction ="backward")
+summary(car.lm.step)
+car.lm.step.pred <- predict(car.lm.step, valid.df)
+accuracy(car.lm.step.pred,valid.df$Price)
+car.lm.step <- step(car.lm, direction ="both")
+summary(car.lm.step)
+#1
+car.df <- read.csv("ToyotaCorolla.csv")
+car.df <- car.df[1:1000,]
+selected.var <- c(3,4,7,8,9,10,12,13,14,17,18)
+set.seed(1)
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+test.index <- sample(c(1:1000),200)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[valid.index,selected.var]
+test.df <- car.df[test.index, selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+#3
+#install.packages("leaps")
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+sum <-summary(search)
+sum$which
+sum$rsq
+sum$adjr2
+sum$cp
+car.lm.null <- lm(Price~1, data = train.df)
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm, direction ="backward")
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm, direction ="backward")
+summary(car.lm.step)
+car.lm.step.pred <- predict(car.lm.step, valid.df)
+accuracy(car.lm.step.pred,valid.df$Price)
+car.lm.step <- step(car.lm, direction ="both")
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+#3
+#install.packages("leaps")
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+function (seed, kind = NULL, normal.kind = NULL, sample.kind = NULL)
+set.seed(1)
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+test.index <- sample(c(1:1000),200)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[valid.index,selected.var]
+test.df <- car.df[test.index, selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+car.lm.step.pred_t <- predict(car.lm.step, test.df)
+accuracy(car.lm.step.pred_t,test.df$Price)
+car.df <- car.df[1:1000,]
+selected.var <- c(3,4,7,8,9,10,12,13,14,17,18)
+set.seed(1)
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+test.index <- sample(c(1:1000),200)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[valid.index,selected.var]
+test.df <- car.df[test.index, selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+#install.packages("leaps")
+library(leaps)
+Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+sum <-summary(search)
+sum$which
+sum$rsq
+sum$adjr2
+sum$cp
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm, direction ="backward")
+summary(car.lm.step)
+#3
+car.lm.step.pred <- predict(car.lm.step, valid.df)
+accuracy(car.lm.step.pred,valid.df$Price)
+car.lm.step.pred_t <- predict(car.lm.step, test.df)
+accuracy(car.lm.step.pred_t,test.df$Price)
+car.lm.step <- step(car.lm, direction ="both")
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+car.lm.step <- step(car.lm, direction ="both")
+#2-1
+housing.df <- read.csv("BostonHousing.csv")
+set.seed(123)
+train.index <- sample(row.names(housing.df), 0.6*dim(housing.df)[1])
+valid.index <- setdiff(row.names(housing.df), train.index)
+train.df <- housing.df[train.index, -14]
+valid.df <- housing.df[valid.index, -14]
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+housing.norm.df <-housing.df
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+train.norm.df <- as.data.frame(predict(norm.values, train.df))
+valid.norm.df <- as.data.frame(predict(norm.values, valid.df))
+housing.norm.df <- as.data.frame(predict(norm.values, housing.df))
+accuracy.df <- data.frame(k = seq(1, 5, 1), RMSE = rep(0, 5))
+for(i in 1:5){
+knn.pred<-class::knn(train = train.norm.df[,-13],
+test = valid.norm.df[,-13],
+cl = train.df[,13], k = i)
+accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+accuracy.df
+# initialize normalized training, validation data, complete data frames to originals
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+housing.norm.df <-housing.df
+# use preProcess() from the caret package to normalize Income and Lot_Size.
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+# use preProcess() from the caret package to normalize Income and Lot_Size.
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+install.packages("carnet")
+library(carnet)
+library("carnet")
+install.packages(carnet)
+library("caret")
+library("ggplot2")
+library("caret")
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+train.norm.df <- as.data.frame(predict(norm.values, train.df))
+valid.norm.df <- as.data.frame(predict(norm.values, valid.df))
+housing.norm.df <- as.data.frame(predict(norm.values, housing.df))
+#initialize a data frame with two columns: k, and accuracy
+accuracy.df <- data.frame(k = seq(1, 5, 1), RMSE = rep(0, 5))
+# compute knn for different k on validation.
+for(i in 1:5){
+knn.pred<-class::knn(train = train.norm.df[,-13],
+test = valid.norm.df[,-13],
+cl = train.df[,13], k = i)
+accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+accuracy.df
+#1-2
+new.df <-data.frame(0.2,0,7,0,0,.538,6,62,4.7,4,307,21,10)
+names(new.df) <- names(train.norm.df)[-13]
+new.norm.values <- preProcess(new.df, method = c("center","scale"))
+new.norm.values <- preProcess(new.df, method=c("center", "scale"))
+new.norm.df <- predict(new.norm.values, newdata = new.df)
+new.knn.pred <- class::knn(train = train.norm.df[,-13],
+test = new.norm.df,
+cl = train.df$MEDV, k = 2)
+new.knn.pred
+#1-2
+new.df<-data.frame(0.2,0,7,0,0.538,6,62,4.7,4,307,21,10)
+names(new.df)<-names(train.norm.df)[-13]
+#norm your new data
+new.norm.values <- preProcess(new.df, method=c("center", "scale"))
+new.norm.df <- predict(new.norm.values, newdata = new.df)
+new.knn.pred <- class::knn(train = train.norm.df[,-13],
+test = new.norm.df,
+cl = train.df$MEDV, k = 2)
+new.knn.pred
+new.norm.values <- preProcess(new.df, method=c("center", "scale"))
+new.norm.df <- predict(new.norm.values, newdata = new.df)
+Fuel_Type <- data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+#1-1
+car.df <- read.csv("ToyotaCorolla.csv")
+car.df <- car.df[1:1000,]
+selected.var <- c(3,4,7,8,9,10,12,13,14,17,18)
+set.seed(1)
+train.index <- sample(c(1:1000),500)
+valid.index <- sample(c(1:1000),300)
+test.index <- sample(c(1:1000),200)
+train.df <- car.df[train.index, selected.var]
+valid.df <- car.df[valid.index,selected.var]
+test.df <- car.df[test.index, selected.var]
+car.lm <- lm(Price ~., data = train.df)
+options(scipen=999)
+summary(car.lm)
+library(forecast)
+car.lm.pred <- predict(car.lm, valid.df)
+options(scipen=999, digits=0)
+some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
+data.frame("Predicted" = car.lm.pred[1:20], "Actual" = valid.df$Price[1:20], "Residual" = some.residuals)
+options(scipen =999, digits =3)
+accuracy(car.lm.pred,valid.df$Price)
+#install.packages("leaps")
+library(leaps)
+#Fuel_Type <- as.data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+Fuel_Type <- data.frame(model.matrix(~ 0 + Fuel_Type, data=train.df))
+train.df <- cbind(train.df[,-4], Fuel_Type[,])
+head(train.df)
+search <- regsubsets(Price ~., data = train.df, nbest = 1, nvmax = dim(train.df)[2], method ="exhaustive" )
+sum <-summary(search)
+sum$which
+sum$rsq
+sum$adjr2
+sum$cp
+car.lm.null <- lm(Price~1, data = train.df)
+car.lm.step <- step(car.lm.null, scope=list(lower=car.lm.null, upper=car.lm), direction ="forward")
+car.lm.step <- step(car.lm, direction ="backward")
+summary(car.lm.step)
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+#2-1
+housing.df <- read.csv("BostonHousing.csv")
+set.seed(123)
+train.index <- sample(row.names(housing.df), 0.6*dim(housing.df)[1])
+valid.index <- setdiff(row.names(housing.df), train.index)
+train.df <- housing.df[train.index, -14]
+valid.df <- housing.df[valid.index, -14]
+train.norm.df <- train.df
+valid.norm.df <- valid.df
+housing.norm.df <-housing.df
+install.packages(carnet)
+library("ggplot2")
+library("caret")
+norm.values <- preProcess(train.df, method=c("center", "scale"))
+train.norm.df <- as.data.frame(predict(norm.values, train.df))
+valid.norm.df <- as.data.frame(predict(norm.values, valid.df))
+housing.norm.df <- as.data.frame(predict(norm.values, housing.df))
+accuracy.df <- data.frame(k = seq(1, 5, 1), RMSE = rep(0, 5))
+for(i in 1:5){
+knn.pred<-class::knn(train = train.norm.df[,-13],
+test = valid.norm.df[,-13],
+cl = train.df[,13], k = i)
+accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+accuracy.df
+library(knn)
+library("knn")
+library(FFNN)
+library(FNN)
+library("FNN")
+library(FNN)
+library(class)
+library(FNN)
+valid.norm.df <- as.data.frame(predict(norm.values, valid.df))
+housing.norm.df <- as.data.frame(predict(norm.values, housing.df))
+accuracy.df <- data.frame(k = seq(1, 5, 1), RMSE = rep(0, 5))
+for(i in 1:5){
+knn.pred<-class::knn(train = train.norm.df[,-13],
+test = valid.norm.df[,-13],
+cl = train.df[,13], k = i)
+accuracy.df[i,2]<-RMSE(as.numeric(as.character(knn.pred)),valid.df[,13])
+}
+accuracy.df
+#install.packages(carnet)
+install.packages(FNN)
+#install.packages(carnet)
+install.packages("FNN")
+library(FNN)
+utilities.df <- read.csv("Utilities.csv")
+row.names(utilities.df) <- utilities.df[,1]
+row.names(utilities.df) <- utilities.df[,-1]
+utilities.df <- utilities.df[,-1]
+d <-dist(utilities.df, method ="euclidean")
+utilities.df.orm <- sapply(utilities.df, scale)
+#add row names: utilites
+row.names(utilities.df.norm) <- row.names(utilities.df)
+#normalize input variables
+utilities.df.norm <- sapply(utilities.df, scale)
+#add row names: utilites
+row.names(utilities.df.norm) <- row.names(utilities.df)
+d.norm <- dist(utilities.df.norm[,c(6,8)], method ="euclidean")

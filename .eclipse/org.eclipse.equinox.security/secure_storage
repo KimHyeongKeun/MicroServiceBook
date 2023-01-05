@@ -1,0 +1,8 @@
+#Equinox secure storage version 1.0
+#Mon Oct 24 09:00:47 KST 2022
+/GIT/https\:\\2f\\2fgithub.com\:443/user=\t,cGhpbGlwOTgxMjE3QG1qdS5hYy5rcg\=\=
+org.eclipse.equinox.security.preferences.version=1
+/GIT/https\:\\2f\\2fgithub.com\:443/password=org.eclipse.equinox.security.osxkeystoreintegration\tZW7Eme8FREQ\=;Va6HWebIUA8\=,uquQuPxUrJ+sfGLyhHghMJLyp3t8nwbjHZr8xg3DOTl1RsHbIh5oxeKawdHzLHkJ
+org.eclipse.equinox.security.preferences.cipher=PBEWithMD5AndDES
+/org.eclipse.equinox.secure.storage/verification/org.eclipse.equinox.security.osxkeystoreintegration=org.eclipse.equinox.security.osxkeystoreintegration\tacIuaHh/xKg\=;VizE/Vsv7n0\=,EziUsgsDYvMmTmfnjKcsPr8027U87Y+f
+org.eclipse.equinox.security.preferences.keyFactory=PBEWithMD5AndDES

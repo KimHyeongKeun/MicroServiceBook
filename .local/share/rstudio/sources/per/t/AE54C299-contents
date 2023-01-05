@@ -1,0 +1,80 @@
+#60205055_김형근
+
+#1
+Cereals<-read.csv("Cereals.csv")
+
+#1-1
+
+head(Cereals)
+#: 수치적 변수: calories, protien, fat, sodium, fiber, carbo, sugars, potass, vitamins, weight, cups
+# 순서형 변수: rating
+#명목형 변수: name, mfr, type, shelf
+
+#1-2
+CSUM<-data.frame(mean=sapply(Cereals[,4:16], mean,na.rm=TRUE), median=sapply(Cereals[,4:16], median,na.rm=TRUE), min=sapply(Cereals[,4:16],min,na.rm=TRUE)
+,max=sapply(Cereals[,4:16], max,na.rm=TRUE) ,sd=sapply(Cereals[,4:16], sd,na.rm=TRUE))
+
+colnames(CSUM)=c("mean","Median","Min","Max","Standard Deviation")
+
+CSUM
+
+#1-3
+library(tidyr)
+
+library(ggplot2)
+
+Cereals %>% gather() %>% head()
+
+ggplot(gather(Cereals[,4:16]),aes(value))+ geom_histogram(bin =10)+facet_wrap(~key,scales = "free_x")
+
+#(a)
+# 어떤 변수의 변동이 가장 큰가? 
+# sodium, 분산 = 7027.854
+
+
+#(b)
+#어떤 변수가  치우쳐 있는가?
+#fiber, 왜도 = 2.43
+
+#(c)
+#극단값으로 보이는 값이 있는가?
+#fiber,첨도 = 8.65
+
+#1-4
+
+boxplot(calories~type,data=Cereals,main="Cold (C) vs. Hot (H) cereals",
+        xlab="Type of cereals",ylab="# of calories",
+        col="blueviolet",medcol="darkgoldenrod1",boxlty=0,border="black",
+        whisklty=1,staplelwd=4,outpch=13,outcex=1,outcol="darkslateblue")
+
+# 그래프를 보면 Hot인 시리얼의 칼로리는 모두 100이며, cold인 시리얼의 대부분의 칼로리는 100~110 내에 분포하고 평균 107이라는 것을 알 수 있다.
+
+#1-5
+boxplot(rating~shelf,data=Cereals,main="Impact of Shelf Size on Customer Ratings",
+        xlab="Ratings",ylab="Shelf",horizontal=TRUE, 
+        col="blueviolet",medcol="darkgoldenrod1",boxlty=0,border="black",
+        whisklty=1,staplelwd=4,outpch=13,outcex=1,outcol="darkslateblue")
+
+#self=2일때 평균값이 35인 반면 shelf=1일때와 shelf=3일 때의 평균값을 보면  46정도로 비슷한 값을 가지고 있다.때문에 shelf1과 shelf3을 하나로 묶는다면 shelf의 대한 변수의 개수를 하나 줄일 수 있다.
+
+
+#1-6
+
+cmCereal=cor(Cereals[,4:16],use="complete.obs")
+round(cmCereal,2)
+
+#(a)
+
+#fiber - potass, 변수 쌍이 상관관계 0.91을 가진다.
+
+#(b)
+
+#fiber와 potass가 서로 강한 양의 상관 관계를 가지므로 이들 중 하나의 변수 제거를 고려할 수 있다.
+
+#(c)
+
+#상관관계가 더 높아질 것이다.
+
+#1-7
+
+#정규화를 하지 않고 아침 식사용 시리얼 데어터에서 13개의 수치형 변수를 가지고 PCA를 수행한 결과이다. 그래서 첫 번째 주성분에 있는 변수 Z1이 가장 많은 정보량을 가지고 있기 때문에 분산비가 53.95%로 가장 높고 변수 하나만을 가지고 누적한 상태이므로 분산비는 곧 누적분산비와 같다.

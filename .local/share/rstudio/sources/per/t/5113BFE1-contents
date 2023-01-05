@@ -1,0 +1,14 @@
+install.packages("e1071")
+library(e1071)
+delays.df <- read.csv("FlightDelays.csv")
+
+delays.df$DAY_WEEK <- factor(delays.df$DAY_WEEK)
+delays.df$DAY_Time <- factor(delays.df$DAY_TIME)
+delays.df$CRS_DEP_TIME <- factor(round(delays.df$CRS_DEP_TIME/100))
+
+selected.var <- c(10,1,8,4,2,13)
+#random sampling으로 60%의 데이터의 인덱스를 뽑아온다.
+
+#train datadp 60%에 해당하는 값을 넣고 
+#train.index <- sample(c(1:))
+#validation 데이터에 나머지 40%를 넣는다.

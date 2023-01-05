@@ -1,0 +1,60 @@
+[2021-02-19 18:06:57.547900] [0x0000000200a18e00] [info]  anysign for pc start
+[2021-02-19 18:06:57.548180] [0x0000000200a18e00] [info]  privilege infomation : gimhyeong-geun
+[2021-02-19 18:06:57.627520] [0x0000000200a18e00] [info]  anysign.no_tls_webcrypto_server : no tls / webcrypto socket
+[2021-02-19 18:06:57.628204] [0x0000000200a18e00] [info]  dynamic assign no tls port : 55003
+[2021-02-19 18:06:57.628328] [0x0000000200a18e00] [info]  anysign.tls_server : tls socket
+[2021-02-19 18:06:57.633271] [0x0000000200a18e00] [info]  dynamic assign tls port : 55004
+[2021-02-19 18:06:58.094956] [0x0000000304b5d000] [info]  websocket.transfer.endpoint.handle_accepterror : 00000022, message : Invalid argument
+[2021-02-19 18:06:58.094866] [0x0000000304c63000] [info]  websocket.transfer.endpoint.handle_accepterror : 00000022, message : Invalid argument
+[2021-02-19 18:06:58.095291] [0x0000000304b5d000] [info]  handle_async_shutdown error : 00000009, message : Bad file descriptor
+[2021-02-19 18:06:58.095332] [0x0000000304c63000] [info]  handle_accept error : 00000003, message : underlying transport error
+[2021-02-19 18:06:58.095336] [0x0000000304b5d000] [info]  websocket.connection.handle_terminate error : 00000006, message : pass through from socket policy
+[2021-02-19 18:06:58.095440] [0x0000000304b5d000] [info]  anysign.base_server.handle_fail
+[2021-02-19 18:06:58.095471] [0x0000000304b5d000] [info]  handle_accept error : 00000003, message : underlying transport error
+[2021-02-19 18:06:58.106260] [0x0000000304c63000] [info]  handle_async_shutdown error : 336462100, message : uninitialized
+[2021-02-19 18:06:58.106342] [0x0000000304c63000] [info]  websocket.connection.handle_terminate error : 00000014, message : generic tls related error
+[2021-02-19 18:06:58.106438] [0x0000000304c63000] [info]  anysign.base_server.handle_fail
+[2021-02-19 18:06:58.106476] [0x0000000304c63000] [info]  handle_accept. remote info : 127.0.0.1:55272
+[2021-02-19 18:06:58.106652] [0x0000000304c63000] [info]  websocket handshake complete measurement point
+[2021-02-19 18:06:58.123869] [0x0000000304c63000] [info]  websocket handshake complete elapsed time : 17 ms
+[2021-02-19 18:06:58.124052] [0x0000000304c63000] [info]  anysign.base_server native origin : svc.wooribank.com
+[2021-02-19 18:06:58.124097] [0x0000000304c63000] [info]  anysign.base_server.handle_open index : 1, remote info : 127.0.0.1:55272
+[2021-02-19 18:06:58.125303] [0x0000000304c63000] [info]  websocket.connection.handle_read_frame complete recv frame data. opcode : 00000001
+[2021-02-19 18:06:58.125330] [0x0000000304c63000] [info]  anysign.base_server.jsonp_handle_input index : 1, data length : 3733
+[2021-02-19 18:06:58.125668] [0x0000000304c63000] [info]  anysign.base_server.native_create_by_websession native create (session:WOORIBANK,id:1,ref:1)
+[2021-02-19 18:06:58.125720] [0x0000000304c63000] [info]  native_check_version measurement point
+[2021-02-19 18:06:58.125736] [0x0000000304c63000] [info]  native_check_version ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:06:58.125757] [0x0000000304c63000] [info]  native_put_license_n measurement point
+[2021-02-19 18:06:58.130885] [0x0000000304c63000] [info]  native_put_license_n ret : 00000000, elapsed time : 5 ms
+[2021-02-19 18:06:58.130916] [0x0000000304c63000] [info]  native_put_storage_n measurement point
+[2021-02-19 18:06:58.130946] [0x0000000304c63000] [info]  native_put_storage_n ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:06:58.130964] [0x0000000304c63000] [info]  native_put_sec_option_n measurement point
+[2021-02-19 18:06:58.130996] [0x0000000304c63000] [info]  native_put_sec_option_n ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:06:58.131012] [0x0000000304c63000] [info]  native_put_sec_context_n measurement point
+[2021-02-19 18:06:58.131038] [0x0000000304c63000] [info]  native_put_sec_context_n ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:06:58.131054] [0x0000000304c63000] [info]  native_put_language_n measurement point
+[2021-02-19 18:06:58.131213] [0x0000000304c63000] [info]  native_put_language_n ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:06:58.131240] [0x0000000304c63000] [info]  native_put_char_set_n measurement point
+[2021-02-19 18:06:58.131268] [0x0000000304c63000] [info]  native_put_char_set_n ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:06:58.131282] [0x0000000304c63000] [info]  native_put_proxy_usage_n measurement point
+[2021-02-19 18:06:58.131306] [0x0000000304c63000] [info]  native_put_proxy_usage_n ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:06:58.131320] [0x0000000304c63000] [info]  native_put_transkey_n measurement point
+[2021-02-19 18:06:58.131343] [0x0000000304c63000] [info]  native_put_transkey_n ret : 00000000, elapsed time : 0 ms
+[2021-02-19 18:07:58.199475] [0x0000000304c63000] [info]  websocket.connection.handle_read_frame complete recv frame data. opcode : 00000010
+[2021-02-19 18:08:58.273138] [0x0000000304c63000] [info]  websocket.connection.handle_read_frame complete recv frame data. opcode : 00000010
+[2021-02-19 18:09:07.681637] [0x0000000304c63000] [info]  ------------- tls connection -------------
+[2021-02-19 18:09:07.681982] [0x0000000304c63000] [info]  index : 1, remote : 127.0.0.1:55272
+[2021-02-19 18:09:07.682292] [0x0000000304c63000] [info]  ------------------------------------------
+[2021-02-19 18:09:58.346059] [0x0000000304c63000] [info]  websocket.connection.handle_read_frame complete recv frame data. opcode : 00000010
+[2021-02-19 18:10:04.712905] [0x0000000304c63000] [info]  websocket.connection.handle_read_frame complete recv frame data. opcode : 00000008
+[2021-02-19 18:10:04.713172] [0x0000000304c63000] [error]  websocket.connection.handle_read_frame error : 00000011, message : tls short read
+[2021-02-19 18:10:04.713459] [0x0000000304c63000] [info]  transport.connection.handle_async_write error : 336396495, message : protocol is shutdown
+[2021-02-19 18:10:04.713543] [0x0000000304c63000] [fatal]  websocket.connection.handle_write_frame error : 00000003, message : underlying transport error
+[2021-02-19 18:10:04.713658] [0x0000000304c63000] [info]  handle_async_shutdown error : 00000054, message : Connection reset by peer
+[2021-02-19 18:10:04.713694] [0x0000000304c63000] [info]  websocket.connection.handle_terminate error : 00000003, message : underlying transport error
+[2021-02-19 18:10:04.713747] [0x0000000304c63000] [info]  anysign.base_server.handle_close. session id : 1, session ref : 0
+[2021-02-19 18:10:04.713860] [0x0000000304c63000] [info]  native delete measurement point
+[2021-02-19 18:10:04.713932] [0x0000000304c63000] [info]  native delete elapsed time : 0 ms
+[2021-02-19 18:10:04.713963] [0x0000000304c63000] [info]  anysign.base_server.handle_close. index : 1, remote info : 127.0.0.1:55272
+[2021-02-19 18:10:36.515794] [0x0000000200a18e00] [info]  anysign.shutdown_session_strategy : begin server shutdown
+[2021-02-19 18:10:36.517394] [0x0000000200a18e00] [info]  anysign for pc stop.

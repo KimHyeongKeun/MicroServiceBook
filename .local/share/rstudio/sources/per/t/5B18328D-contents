@@ -1,0 +1,23 @@
+#[11/23]
+utilities.df <- read.csv("Utilities.csv")
+
+#set row names to the utilities column
+row.names(utilities.df) <- utilities.df[,1]
+
+#remove the utility column
+utilities.df <- utilities.df[,-1]
+
+#compute Euclidean distance
+#dist -> distance를 구할 때 사용한다. 
+d <-dist(utilities.df, method ="euclidean")
+
+#정규화를 해야한다.
+
+#Code for Normalizing then computing Distance
+
+#normalize input variables
+utilities.df.norm <- sapply(utilities.df, scale)
+
+#add row names: utilites
+row.names(utilities.df.norm) <- row.names(utilities.df)
+d.norm <- dist(utilities.df.norm[,c(6,8)], method ="euclidean")

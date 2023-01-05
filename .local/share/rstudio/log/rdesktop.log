@@ -1,0 +1,1 @@
+2022-11-22T06:53:15.709541Z [rdesktop] ERROR Main window closed unexpectedly; LOGGED FROM: auto rstudio::desktop::MainWindow::closeEvent(QCloseEvent *)::(anonymous class)::operator()(QVariant) const src/cpp/desktop/DesktopMainWindow.cpp:524
