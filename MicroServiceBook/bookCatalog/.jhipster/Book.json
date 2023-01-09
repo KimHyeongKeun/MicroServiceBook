@@ -1,0 +1,25 @@
+{
+  "changelogDate": "20230109130604",
+  "clientRootFolder": "bookCatalog",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "bookId",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "rentCnt",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "microserviceName": "bookCatalog",
+  "name": "Book",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

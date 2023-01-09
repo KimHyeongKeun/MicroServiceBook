@@ -38,6 +38,7 @@ public class SecurityConfiguration {
         // @formatter:off
         http
             .csrf()
+            .ignoringAntMatchers("/h2-console/**")
             .disable()
             .exceptionHandling()
                 .authenticationEntryPoint(problemSupport)
@@ -47,6 +48,7 @@ public class SecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .authorizeRequests()
+            .antMatchers("/h2-console/**").permitAll()
             .antMatchers("/api/authenticate").permitAll()
             .antMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/**").authenticated()

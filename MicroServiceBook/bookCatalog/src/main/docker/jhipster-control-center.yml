@@ -43,7 +43,7 @@ services:
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
       - SPRING_SECURITY_USER_PASSWORD=admin
       # The token should have the same value than the one declared in you Spring configuration under the jhipster.security.authentication.jwt.base64-secret configuration's entry
-      - JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET=MjAwMTNiMzcwMGM5MjczM2M1N2U0MTJkMzgxOTBmODA2NDFiYjE4NDMzYTMwODAyYjAzNTQ4MDRkM2U5ZTIxYjBkM2MzN2NkOWY2MjJiZWEwMTA4M2JhNWVkZTNiNTM2YTRiODFiNGMzYWIzNjg3YjhhZGVhOTUzNDg3NmJiYWU=
+      - JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET=ZTc1MGZiYzJiNWNjYmFhYWJlNGQ2MGRjNTYyOTg1ZmJjZjA3M2FlMzUzYzUxNThlMTliMmVlNjg4YjU4ZWMzOGE5N2IxNzQ1MzRjYTIxNDQ2ZjkzZDIzMWFkN2ZjODk5MzA3YzgyNGFlMWY3YjgyYzQzN2UzYWJjY2FkYjdhMDI=
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:admin@host.docker.internal:8761/eureka/
       - LOGGING_FILE_NAME=/tmp/jhipster-control-center.log
     # If you want to expose these ports outside your dev PC,

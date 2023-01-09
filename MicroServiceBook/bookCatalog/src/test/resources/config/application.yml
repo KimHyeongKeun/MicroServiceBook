@@ -20,20 +20,15 @@ eureka:
     appname: bookCatalog
     instanceId: bookCatalog:${spring.application.instance-id:${random.value}}
 
-mongock:
-  migration-scan-package:
-    - com.my.bookcatalog.config.dbmigrations
-  mongo-db:
-    read-concern: local
-    write-concern:
-      journal: false
-
 spring:
   application:
     name: bookCatalog
   cloud:
     config:
       enabled: false
+  # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
+  liquibase:
+    contexts: test
   jackson:
     serialization:
       write-durations-as-timestamps: false
@@ -87,7 +82,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: MjAwMTNiMzcwMGM5MjczM2M1N2U0MTJkMzgxOTBmODA2NDFiYjE4NDMzYTMwODAyYjAzNTQ4MDRkM2U5ZTIxYjBkM2MzN2NkOWY2MjJiZWEwMTA4M2JhNWVkZTNiNTM2YTRiODFiNGMzYWIzNjg3YjhhZGVhOTUzNDg3NmJiYWU=
+        base64-secret: ZTc1MGZiYzJiNWNjYmFhYWJlNGQ2MGRjNTYyOTg1ZmJjZjA3M2FlMzUzYzUxNThlMTliMmVlNjg4YjU4ZWMzOGE5N2IxNzQ1MzRjYTIxNDQ2ZjkzZDIzMWFkN2ZjODk5MzA3YzgyNGFlMWY3YjgyYzQzN2UzYWJjY2FkYjdhMDI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
 

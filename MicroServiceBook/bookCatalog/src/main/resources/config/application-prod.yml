@@ -50,10 +50,23 @@ spring:
       profile: prod
       label: main # toggle to switch to a different version of the configuration as stored in git
       # it can be set to any label, branch or commit of the configuration source Git repository
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017
-      database: bookCatalog
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/bookCatalog?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+  jpa:
+  # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
+  liquibase:
+    contexts: prod
   thymeleaf:
     cache: true
   sleuth:
@@ -122,7 +135,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: MjAwMTNiMzcwMGM5MjczM2M1N2U0MTJkMzgxOTBmODA2NDFiYjE4NDMzYTMwODAyYjAzNTQ4MDRkM2U5ZTIxYjBkM2MzN2NkOWY2MjJiZWEwMTA4M2JhNWVkZTNiNTM2YTRiODFiNGMzYWIzNjg3YjhhZGVhOTUzNDg3NmJiYWU=
+        base64-secret: ZTc1MGZiYzJiNWNjYmFhYWJlNGQ2MGRjNTYyOTg1ZmJjZjA3M2FlMzUzYzUxNThlMTliMmVlNjg4YjU4ZWMzOGE5N2IxNzQ1MzRjYTIxNDQ2ZjkzZDIzMWFkN2ZjODk5MzA3YzgyNGFlMWY3YjgyYzQzN2UzYWJjY2FkYjdhMDI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

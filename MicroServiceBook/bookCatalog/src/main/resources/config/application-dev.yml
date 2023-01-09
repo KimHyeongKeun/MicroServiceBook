@@ -31,7 +31,7 @@ spring:
   devtools:
     restart:
       enabled: true
-      additional-exclude: static/**
+      additional-exclude: static/**,.h2.server.properties
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
   jackson:
@@ -45,10 +45,22 @@ spring:
       profile: dev
       label: main # toggle to switch to a different version of the configuration as stored in git
       # it can be set to any label, branch or commit of the configuration source Git repository
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017
-      database: bookCatalog
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:bookcatalog;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=LEGACY
+    username: bookCatalog
+    password:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  h2:
+    console:
+      # disable spring boot built-in h2-console since we start it manually with correct configuration
+      enabled: false
+  jpa:
+  liquibase:
+    # Remove 'faker' if you do not want the sample data to be loaded automatically
+    contexts: dev, faker
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
@@ -97,7 +109,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: MjAwMTNiMzcwMGM5MjczM2M1N2U0MTJkMzgxOTBmODA2NDFiYjE4NDMzYTMwODAyYjAzNTQ4MDRkM2U5ZTIxYjBkM2MzN2NkOWY2MjJiZWEwMTA4M2JhNWVkZTNiNTM2YTRiODFiNGMzYWIzNjg3YjhhZGVhOTUzNDg3NmJiYWU=
+        base64-secret: ZTc1MGZiYzJiNWNjYmFhYWJlNGQ2MGRjNTYyOTg1ZmJjZjA3M2FlMzUzYzUxNThlMTliMmVlNjg4YjU4ZWMzOGE5N2IxNzQ1MzRjYTIxNDQ2ZjkzZDIzMWFkN2ZjODk5MzA3YzgyNGFlMWY3YjgyYzQzN2UzYWJjY2FkYjdhMDI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
